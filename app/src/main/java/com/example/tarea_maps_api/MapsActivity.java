@@ -8,6 +8,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -40,17 +41,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        // Add a marker in Sydney and move the camera
-        Market(googleMap);
+        //Puntos
+        Points(googleMap);
+        //Poligono
         Polyg(googleMap);
     }
 
-    public void Market(GoogleMap googleMap)
+    public void Points(GoogleMap googleMap)
     {
         mMap = googleMap;
+        //Tipo de mapa
         mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
+        //puntos
         final LatLng puntoFCI = new LatLng(-1.0126056,-79.4706553);
         final LatLng puntoUTEQ = new LatLng(-1.0124661,-79.4706339);
         final LatLng puntoFCA = new LatLng(-1.0130113,-79.4689984);
@@ -63,17 +66,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         final LatLng puntoComed = new LatLng(-1.012918, -79.469982);
         final LatLng puntoFCAmb = new LatLng(-1.012679, -79.471108);
 
-        mMap.addMarker(new MarkerOptions().position(puntoFCI).title("FCI"));
-        mMap.addMarker(new MarkerOptions().position(puntoFCA).title("U.PostGrado"));
-        mMap.addMarker(new MarkerOptions().position(puntoRect).title("FC. AgrariasRectorado"));
-        mMap.addMarker(new MarkerOptions().position(puntoAdit).title("Aditurium"));
-        mMap.addMarker(new MarkerOptions().position(puntoPark).title("Parqueadero"));
-        mMap.addMarker(new MarkerOptions().position(puntoBibl).title("Biblioteca"));
-        mMap.addMarker(new MarkerOptions().position(puntoInsti).title("Instituto de Inform."));
-        mMap.addMarker(new MarkerOptions().position(puntoFCE).title("FCE"));
-        mMap.addMarker(new MarkerOptions().position(puntoComed).title("Comedor D'Scarlet"));
-        mMap.addMarker(new MarkerOptions().position(puntoFCAmb).title("FC. Ambientales"));
+        //Marcadores
+        mMap.addMarker(new MarkerOptions().position(puntoFCI).title("FCI").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(puntoFCA).title("U.PostGrado").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(puntoRect).title("FC. Agrarias").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(puntoAdit).title("Aditurium").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(puntoPark).title("Parqueadero").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE))).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(puntoBibl).title("Biblioteca").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(puntoInsti).title("Instituto de Inform.").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED))).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(puntoFCE).title("FCE").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA))).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(puntoComed).title("Comedor D'Scarlet").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW))).showInfoWindow();
+        mMap.addMarker(new MarkerOptions().position(puntoFCAmb).title("FC. Ambientales").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))).showInfoWindow();
 
+        //Configuraciones
         mMap.moveCamera(CameraUpdateFactory.newLatLng(puntoUTEQ));
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
